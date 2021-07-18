@@ -2,6 +2,10 @@ import { useState } from "react";
 import { NextPage, GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import Head from "next/head";
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+
+dayjs.extend(utc);
 
 type IndexProps = {
   texts: Array<{
@@ -67,7 +71,18 @@ const Index: NextPage<IndexProps> = ({ texts }) => {
                 {text._user_id.slice(0, 2).toUpperCase()}
               </div>
             </div>
-            <div className="message">{text.text}</div>
+            <div className="message">
+              <div className="meta">
+                <span className="user_name">@unknown</span>
+                <span className="created_at">
+                  {dayjs
+                    .utc(text._created_at)
+                    .local()
+                    .format("YYYY-MM-DD HH:mm:ss")}
+                </span>
+              </div>
+              <div className="body">{text.text}</div>
+            </div>
           </div>
         ))}
       </section>

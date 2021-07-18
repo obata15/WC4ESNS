@@ -10,6 +10,7 @@
     "format": "./node_modules/.bin/prettier --write **/*.{tsx,js,json,md}"
   },
   "dependencies": {
+    "dayjs": "^1.10.6",
     "next": "11.0.1",
     "react": "17.0.2",
     "react-dom": "17.0.2"
