@@ -89,7 +89,11 @@ const Index: NextPage<IndexProps> = ({ texts, users }) => {
               }}
             >
               <div className="avatar">
-                {text._user_id.slice(0, 2).toUpperCase()}
+                {users.find((user) => user.id === text._user_id)?.name
+                  ? users
+                      .find((user) => user.id === text._user_id)
+                      ?.name.slice(0, 2)
+                  : text._user_id.slice(0, 2).toUpperCase()}
               </div>
             </div>
             <div className="message">
@@ -97,7 +101,7 @@ const Index: NextPage<IndexProps> = ({ texts, users }) => {
                 <span className="user_name">
                   @
                   {users.find((user) => user.id === text._user_id)?.name ??
-                    "undefined"}
+                    text._user_id.slice(0, 8)}
                 </span>
                 <span className="created_at">
                   {dayjs
