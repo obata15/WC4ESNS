@@ -54,11 +54,23 @@ const Index: NextPage<IndexProps> = ({ texts }) => {
           onChange={(e) => setMessage(e.target.value)}
         />
       </form>
-      <ul>
+      <section className="texts">
         {texts.map((text) => (
-          <li key={text.id}>{text.text}</li>
+          <div className="text">
+            <div
+              className="avatar_container"
+              style={{
+                background: "#" + text._user_id.slice(0, 6),
+              }}
+            >
+              <div className="avatar">
+                {text._user_id.slice(0, 2).toUpperCase()}
+              </div>
+            </div>
+            <div className="message">{text.text}</div>
+          </div>
         ))}
-      </ul>
+      </section>
     </>
   );
 };

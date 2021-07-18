@@ -17,3 +17,31 @@ input {
   width: 100%;
   font-size: 1.2em;
 }
+
+.text {
+  display: flex;
+  padding: 0.5em 0;
+}
+
+.text + .text {
+  border-top: solid 1px #cccccc;
+}
+
+.avatar_container {
+  min-width: 3em;
+  height: 3em;
+  margin-right: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar {
+  text-shadow: 1px 1px 0 white, -1px 1px 0 white, 1px -1px 0 white,
+    -1px -1px 0 white;
+  font-weight: bold;
+}
+
+.text {
+  max-width: calc(768px - 3em);
+}
