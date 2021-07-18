@@ -1,3 +1,19 @@
 body {
   font-family: sans-serif;
 }
+
+#__next {
+  max-width: 768px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  background: #000000;
+  color: #ffffff;
+}
+
+input {
+  width: 100%;
+  font-size: 1.2em;
+}

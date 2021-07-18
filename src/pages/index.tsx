@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { NextPage, GetStaticProps } from "next";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 type IndexProps = {
   texts: Array<{
@@ -36,7 +37,10 @@ const Index: NextPage<IndexProps> = ({ texts }) => {
 
   return (
     <>
-      <h1>WebClient4Engineer</h1>
+      <Head>
+        <title>SNS for Engineer</title>
+      </Head>
+      <h1>SNS for Engineer</h1>
       <form
         onSubmit={(e) => {
           e.preventDefault();
