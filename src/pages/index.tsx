@@ -8,23 +8,44 @@ import utc from "dayjs/plugin/utc";
 dayjs.extend(utc);
 
 type IndexProps = {
-  texts: Array<{
-    id: string;
-    text: string;
-    _created_at: string;
-    _updated_at: string;
-    _user_id: string;
-  }>;
+  texts: Array<Text>;
+  users: Array<User>;
+};
+
+type Text = {
+  id: string;
+  text: string;
+  _created_at: string;
+  _updated_at: string;
+  _user_id: string;
+};
+
+type User = {
+  id: string;
+  name: string;
+  description: string;
+  _user_id: string;
+  _created_at: string;
+  _updated_at: string;
 };
 
 const baseUrl = "https://versatileapi.herokuapp.com/api";
 
 export const getStaticProps: GetStaticProps<IndexProps> = async () => {
-  const res = await fetch(
+  const texts = await fetch(
     baseUrl + "/text/all?$orderby=_created_at%20desc&$limit=100"
   );
-  const json = await res.json();
-  return { props: { texts: json } };
+  const textsJson = await texts.json();
+
+  const users = await fetch(baseUrl + "/user/all");
+  const usersJson = await users.json();
+
+  return {
+    props: {
+      texts: textsJson,
+      users: usersJson,
+    },
+  };
 };
 
 const submitMessage = (message: string) => {
@@ -35,7 +56,7 @@ const submitMessage = (message: string) => {
   });
 };
 
-const Index: NextPage<IndexProps> = ({ texts }) => {
+const Index: NextPage<IndexProps> = ({ texts, users }) => {
   const router = useRouter();
   const [message, setMessage] = useState("");
 
@@ -73,7 +94,11 @@ const Index: NextPage<IndexProps> = ({ texts }) => {
             </div>
             <div className="message">
               <div className="meta">
-                <span className="user_name">@unknown</span>
+                <span className="user_name">
+                  @
+                  {users.find((user) => user.id === text._user_id)?.name ??
+                    "undefined"}
+                </span>
                 <span className="created_at">
                   {dayjs
                     .utc(text._created_at)
