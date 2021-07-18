@@ -16,7 +16,7 @@ const baseUrl = "https://versatileapi.herokuapp.com/api";
 
 export const getStaticProps: GetStaticProps<IndexProps> = async () => {
   const res = await fetch(
-    baseUrl + "/text/all?$orderby=_created_at%20desc&$limit=20"
+    baseUrl + "/text/all?$orderby=_created_at%20desc&$limit=100"
   );
   const json = await res.json();
   return { props: { texts: json } };
