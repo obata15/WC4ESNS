@@ -60,7 +60,7 @@ const Index: NextPage<IndexProps> = ({ texts }) => {
       </form>
       <section className="texts">
         {texts.map((text) => (
-          <div className="text">
+          <div className="text" key={text.id}>
             <div
               className="avatar_container"
               style={{
