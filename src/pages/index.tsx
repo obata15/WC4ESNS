@@ -63,9 +63,9 @@ const Index: NextPage<IndexProps> = ({ texts, users }) => {
   return (
     <>
       <Head>
-        <title>SNS for Engineer</title>
+        <title>SNS for Engineers</title>
       </Head>
-      <h1>SNS for Engineer</h1>
+      <h1>SNS for Engineers</h1>
       <form
         onSubmit={(e) => {
           e.preventDefault();
