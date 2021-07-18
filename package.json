@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "./node_modules/.bin/prettier --write **/*.{tsx,js,json,md}"
   },
   "dependencies": {
     "next": "11.0.1",
@@ -19,6 +20,7 @@
     "eslint": "7.31.0",
     "eslint-config-next": "11.0.1",
     "eslint-config-prettier": "^8.3.0",
+    "prettier": "^2.3.2",
     "typescript": "4.3.5"
   }
 }
