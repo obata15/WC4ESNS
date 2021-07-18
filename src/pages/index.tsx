@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
+import Linkify from "react-linkify";
 
 dayjs.extend(utc);
 
@@ -110,7 +111,9 @@ const Index: NextPage<IndexProps> = ({ texts, users }) => {
                     .format("YYYY-MM-DD HH:mm:ss")}
                 </span>
               </div>
-              <div className="body">{text.text}</div>
+              <div className="body">
+                <Linkify>{text.text}</Linkify>
+              </div>
             </div>
           </div>
         ))}
