@@ -50,10 +50,11 @@ export const getStaticProps: GetStaticProps<IndexProps> = async () => {
 };
 
 const submitMessage = (message: string) => {
+  const clientName = "WC4ESNS";
   fetch(baseUrl + "/text", {
     method: "POST",
     headers: { Authorization: "HelloWorld" },
-    body: JSON.stringify({ text: message }),
+    body: JSON.stringify({ text: message + " · from " + clientName }),
   });
 };
 
